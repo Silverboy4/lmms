@@ -1367,6 +1367,7 @@ lmms--gui--Oscilloscope {
 QMdiArea {
 	background-image: none;
 	background-color: #07090d;
+	border-image: url("resources:background_artwork.png") 0 0 0 0 stretch stretch;
 }
 
 QMainWindow,
