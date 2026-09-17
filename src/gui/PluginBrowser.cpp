@@ -24,6 +24,9 @@
 
 #include "PluginBrowser.h"
 
+#include <algorithm>
+
+#include <QColor>
 #include <QHeaderView>
 #include <QLabel>
 #include <QLineEdit>
@@ -32,6 +35,7 @@
 #include <QPainter>
 #include <QStyleOption>
 #include <QTreeWidget>
+#include <QVBoxLayout>
 
 #include "ConfigManager.h"
 #include "embed.h"
@@ -268,9 +272,11 @@ PluginDescWidget::PluginDescWidget(const PluginKey &_pk, bool favorite,
 	setFixedHeight( DEFAULT_HEIGHT );
 	setMouseTracking( true );
 	setCursor( Qt::PointingHandCursor );
-	setToolTip(_pk.desc->subPluginFeatures
+	const auto description = _pk.desc->subPluginFeatures
 		? _pk.description()
-		: tr(_pk.desc->description));
+		: tr(_pk.desc->description);
+	setToolTip(description + '\n'
+		+ tr("Right-click to add or remove this plugin from favorites."));
 }
 
 
