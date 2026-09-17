@@ -212,7 +212,7 @@ void PluginBrowser::addPlugins()
 	const auto addPlugin = [this, favoritesRoot, &addWidget](const auto& key, auto root)
 	{
 		const auto id = QString::fromUtf8(key.desc->name)
-			+ QChar(0x1f) + key.displayName();
+			+ QStringLiteral("::") + key.displayName();
 		const bool favorite = m_favorites.contains(id);
 		addWidget(key, root, favorite);
 		if (favorite)
@@ -283,16 +283,19 @@ QString PluginDescWidget::name() const
 QString PluginDescWidget::identifier() const
 {
 	return QString::fromUtf8(m_pluginKey.desc->name)
-		+ QChar(0x1f) + m_pluginKey.displayName();
+		+ QStringLiteral("::") + m_pluginKey.displayName();
 }
 
 
 QString PluginDescWidget::searchText() const
 {
 	QString text = m_pluginKey.displayName();
-	text += ' ' + QString::fromUtf8(m_pluginKey.desc->name);
-	text += ' ' + QString::fromUtf8(m_pluginKey.desc->author);
-	text += ' ' + (m_pluginKey.desc->subPluginFeatures
+	text += QLatin1Char(' ');
+	text += QString::fromUtf8(m_pluginKey.desc->name);
+	text += QLatin1Char(' ');
+	text += QString::fromUtf8(m_pluginKey.desc->author);
+	text += QLatin1Char(' ');
+	text += (m_pluginKey.desc->subPluginFeatures
 		? m_pluginKey.description()
 		: tr(m_pluginKey.desc->description));
 	return text;
