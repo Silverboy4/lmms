@@ -703,7 +703,8 @@ lmms--gui--PluginDescWidget {
 }
 
 lmms--gui--PluginDescWidget:hover {
-	background-color: #edf7ff;
+	background-color: #1a2230;
+	color: #00e5ff;
 }
 
 /* piano widget */
@@ -723,7 +724,7 @@ lmms--gui--ControllerRackView QPushButton {
 lmms--gui--MixerChannelView {
 	background: #141a25;
 	color: #edf7ff;
-	qproperty-backgroundActive: #7d8691;
+	qproperty-backgroundActive: #243247;
 	qproperty-strokeOuterActive: rgb( 0, 0, 0 );
 	qproperty-strokeOuterInactive: rgba( 0, 0, 0, 50 );
 	qproperty-strokeInnerActive: rgba( 255, 255, 255, 100 );
@@ -1141,13 +1142,13 @@ lmms--gui--BarModelEditor {
 lmms--gui--LmmsPalette {
 	qproperty-background: #141a25;
 	qproperty-windowText: #f0f0f0;
-	qproperty-base: #808080;
+	qproperty-base: #0b0d12;
 	qproperty-text: #edf7ff;
 	qproperty-button: #121722;
 	qproperty-shadow: #000;
-	qproperty-buttonText: #000;
+	qproperty-buttonText: #edf7ff;
 	qproperty-brightText: #00e5ff;
-	qproperty-highlight: #0b0d12;
+	qproperty-highlight: #243247;
 	qproperty-highlightedText: #ffffff;
 }
 
@@ -1476,4 +1477,49 @@ lmms--gui--Oscilloscope {
 	background-color: #07090d;
 	border: 1px solid #273449;
 	border-radius: 3px;
+}
+
+
+/* Synthetic Zay v2.1: eliminate light palette fallbacks */
+
+QMdiSubWindow,
+QTabWidget::pane,
+QAbstractScrollArea,
+QAbstractItemView,
+QComboBox QAbstractItemView {
+	background-color: #0b0d12;
+	color: #edf7ff;
+	border-color: #273449;
+}
+
+QComboBox QAbstractItemView::item:selected {
+	background-color: #243247;
+	color: #00e5ff;
+}
+
+QTableView,
+QTableWidget {
+	background-color: #0b0d12;
+	alternate-background-color: #101620;
+	gridline-color: #273449;
+	selection-background-color: #243247;
+	selection-color: #00e5ff;
+}
+
+QPlainTextEdit {
+	background-color: #0b0d12;
+	color: #edf7ff;
+	border: 1px solid #273449;
+}
+
+lmms--gui--PluginDescWidget {
+	background-color: #101620;
+	color: #edf7ff;
+	border: 1px solid #273449;
+}
+
+lmms--gui--PluginDescWidget:hover {
+	background-color: #1a2230;
+	color: #00e5ff;
+	border-color: #ff2da6;
 }
