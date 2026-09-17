@@ -1452,8 +1452,7 @@ QRadioButton::indicator:checked {
 }
 
 lmms--gui--SongEditor,
-lmms--gui--TrackContainerView,
-lmms--gui--PatternView {
+lmms--gui--TrackContainerView {
 	background-color: #080a0f;
 }
 
