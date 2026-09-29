@@ -26,6 +26,7 @@
 #define LMMS_GUI_PLUGIN_BROWSER_H
 
 #include <QPixmap>
+#include <QStringList>
 
 #include "SideBarWidget.h"
 #include "Plugin.h"
@@ -44,14 +45,18 @@ public:
 
 private slots:
 	void onFilterChanged( const QString & filter );
+	void onFavoriteChanged( const QString & pluginId, bool favorite );
 
 private:
 	void addPlugins();
 	void updateRootVisibility( int index );
 	void updateRootVisibilities();
+	void saveFavorites() const;
 
 	QWidget * m_view;
 	QTreeWidget * m_descTree;
+	QStringList m_favorites;
+	QString m_filter;
 };
 
 
@@ -60,9 +65,14 @@ class PluginDescWidget : public QWidget
 	Q_OBJECT
 public:
 	using PluginKey = Plugin::Descriptor::SubPluginFeatures::Key;
-	PluginDescWidget( const PluginKey & _pk, QWidget * _parent );
+	PluginDescWidget( const PluginKey & _pk, bool favorite, QWidget * _parent );
 	QString name() const;
+	QString identifier() const;
+	QString searchText() const;
 	void openInNewInstrumentTrack(QString value);
+
+signals:
+	void favoriteChanged( const QString & pluginId, bool favorite );
 
 protected:
 #if (QT_VERSION >= QT_VERSION_CHECK(6, 0, 0))
@@ -80,8 +90,8 @@ private:
 
 	PluginKey m_pluginKey;
 	QPixmap m_logo;
-
 	bool m_mouseOver;
+	bool m_favorite;
 };
 
 

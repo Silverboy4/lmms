@@ -51,3 +51,26 @@ resources that are not customized continue to use the default assets.
 Keep `master` synchronized with upstream LMMS. Develop each customization in
 a dedicated branch and merge only after it builds and passes a short manual
 audio/UI check.
+
+## Fedora build helper
+
+The feature branch includes an isolated Fedora build workflow:
+
+```bash
+./buildtools/build-fedora-synthetic-zay.sh deps
+./buildtools/build-fedora-synthetic-zay.sh configure
+./buildtools/build-fedora-synthetic-zay.sh build
+./buildtools/build-fedora-synthetic-zay.sh test
+./buildtools/build-fedora-synthetic-zay.sh run
+```
+
+Only `deps` installs system packages and uses `sudo`. The build is written to
+`build-synthetic-zay`, and the optional user installation is written to
+`target-synthetic-zay`, so the normal Fedora LMMS package remains untouched.
+
+To create a distributable AppImage after a successful build:
+
+```bash
+./buildtools/build-fedora-synthetic-zay.sh package
+```
+
